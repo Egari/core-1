@@ -542,6 +542,45 @@ class Request
     }
 
     /**
+     * Use this method to send point on the map. On success, the sent Message is returned.
+     *
+     * @link https://core.telegram.org/bots/api#sendVenue
+     *
+     * @param array $data
+     *
+     * @return \Longman\TelegramBot\Entities\ServerResponse
+     * @throws \Longman\TelegramBot\Exception\TelegramException
+     */
+    public static function sendLocation(array $data)
+    {
+        $data['longitude'] = floatval($data['longitude']);
+        $data['latitude']  = floatval($data['latitude']);
+
+        $response = self::send('sendLocation', $data);
+        return $response;
+    }
+
+
+    /**
+     * Use this method to send point on the map. On success, the sent Message is returned.
+     *
+     * @link https://core.telegram.org/bots/api#sendVenue
+     *
+     * @param array $data
+     *
+     * @return \Longman\TelegramBot\Entities\ServerResponse
+     * @throws \Longman\TelegramBot\Exception\TelegramException
+     */
+    public static function sendVenue(array $data)
+    {
+        $data['longitude'] = floatval($data['longitude']);
+        $data['latitude']  = floatval($data['latitude']);
+
+        $response = self::send('sendVenue', $data);
+        return $response;
+    }
+
+    /**
      * Any statically called method should be relayed to the `send` method.
      *
      * @param string $action
